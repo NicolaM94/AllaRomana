@@ -1,25 +1,53 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
-    id 'groovy'
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group = 'me.nicola'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    mavenCentral()
+}
+
+application {
+    mainClassName = "Engine"
+}
+
+javafx {
+    version = "11.0.2"
+    modules = ['javafx.controls', 'javafx.graphics']
 }
 
 dependencies {
-    implementation 'com.google.code.gson:gson:2.8.7'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+    implementation 'no.tornado:tornadofx:1.7.20'}
 
 test {
-    useJUnitPlatform()
+    useJUnit()
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+
+task fatJar(type: Jar) {
+    baseName 'your_preferred_package_name'
+
+    manifest {
+        attributes "Main-Class": "EngineKt"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    with jar
 }
