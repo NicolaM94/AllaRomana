@@ -26,6 +26,7 @@ class MainView :View() {
                 baseColor = Color.web("#feb365")
                 setPrefSize(225.0,30.0)
             }
+            action { replaceWith(NewProjectView::class) }
         }
         button ("Vedi i progetti") {
             style {
