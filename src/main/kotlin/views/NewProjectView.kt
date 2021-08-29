@@ -1,27 +1,48 @@
 package views
+import controller.AppController
 import javafx.beans.property.IntegerProperty
+import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.beans.value.ObservableIntegerValue
+import javafx.geometry.Pos
 import javafx.scene.Parent
 import javafx.scene.paint.Paint
+import logic.Partecipant
 import tornadofx.*
 import java.awt.Color
 
 class NewProjectView :View() {
 
+    val appController : AppController by inject()
     val projectName = SimpleStringProperty()
-    var numberOfPartecipant = observableIntArrayOf()
+    val projectPartecipants = SimpleStringProperty()
+
 
     override val root = vbox {
-        hbox {
-            textfield (projectName) { promptText="Nome del progetto" }
-            textfield () { textProperty().addListener { obs,old,new ->
-                if (!new.isInt()) this.style {
-                    focusColor = Paint.valueOf("#ff0000")
-                }
+
+        style {
+            alignment = Pos.CENTER
+            setSpacing(10.0)
+            paddingAll = 150.0
+        }
+
+        textfield (projectName){ promptText = "Nome del progetto"  }
+        textfield (projectPartecipants) { promptText = "Numero di partecipanti" }
+        button ("Avvia progetto!") {
+
+            action {
+                try {
+                    projectPartecipants.value.toInt()
+                    appController.projectname.set(projectName.value)
+                    appController.partecipants.set(projectPartecipants.value.toInt())
+                    replaceWith<PartecipantInitter>()
+                } catch (exception:NumberFormatException) {
+                    openInternalWindow<NumberFormatExceptionView>()
                 }
             }
         }
+        button ("Annulla") { action { replaceWith<MainView>() }}
+
     }
 
 }

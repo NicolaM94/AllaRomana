@@ -2,6 +2,7 @@ package views
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
+import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.io.File
 import java.net.URI
@@ -22,7 +23,8 @@ class MainView :View() {
 
         button ("Crea nuovo progetto") {
             style {
-                focusColor = Paint.valueOf("#fe9d65")
+                fontWeight = FontWeight.EXTRA_BOLD
+                focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
                 setPrefSize(225.0,30.0)
             }
@@ -30,16 +32,21 @@ class MainView :View() {
         }
         button ("Vedi i progetti") {
             style {
-                focusColor = Paint.valueOf("#fe9d65")
+                fontWeight = FontWeight.EXTRA_BOLD
+                focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
                 setPrefSize(225.0,30.0)
             }
         }
         button ("Informazioni") {
             style {
-                focusColor = Paint.valueOf("#fe9d65")
+                fontWeight = FontWeight.EXTRA_BOLD
+                focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
                 setPrefSize(225.0,30.0)
+            }
+            action {
+                replaceWith<InfoView>()
             }
         }
 
