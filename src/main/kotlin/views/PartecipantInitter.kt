@@ -1,14 +1,10 @@
 package views
-import com.sun.tools.javac.Main
 import controller.AppController
+import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
-import javafx.scene.Parent
-import javafx.scene.control.Button
 import javafx.scene.text.FontWeight
-import javafx.scene.text.Text
+import logic.Partecipant
 import tornadofx.*
-import java.awt.Label
-import java.awt.TextField
 
 class PartecipantInitter :View() {
 
@@ -24,13 +20,24 @@ class PartecipantInitter :View() {
     }
 
     override fun onDock() {
-        println(this.root.children)
+
+        //Pulisce dai children textfields creati nelle chiamate precedenti
         this.root.children.remove(0,this.root.children.size)
+        //Crea i nuovi children della classe per l'istanza corrente
         label ("Inserisci in nomi dei partecipanti!")
         for (n in 1..appController.partecipants.value) {
-            this.root.addChildIfPossible(textfield { promptText = "Partecipante n. $n"})
+            appController.listOfListeners.add(SimpleStringProperty())
+            this.root.addChildIfPossible(textfield (appController.listOfListeners.last()) { promptText = "Partecipante n. $n"})
         }
-        button ("Inserisci") {  }
+        button ("Inserisci") {
+            action {
+                appController.listOfListeners.forEach {
+                    appController.listOfPartecipant.add(Partecipant(it.value))
+                }
+                println(appController.listOfPartecipant)
+                replaceWith<MainView>()
+            }
+        }
         button ("Annulla") { action { replaceWith<MainView>() }}
         super.onDock()
     }

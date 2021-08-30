@@ -1,4 +1,4 @@
-package views
+package popups
 import javafx.scene.Parent
 import javafx.scene.paint.Color
 import javafx.scene.paint.Paint

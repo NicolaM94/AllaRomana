@@ -1,15 +1,9 @@
 package views
 import controller.AppController
-import javafx.beans.property.IntegerProperty
-import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
-import javafx.beans.value.ObservableIntegerValue
 import javafx.geometry.Pos
-import javafx.scene.Parent
-import javafx.scene.paint.Paint
-import logic.Partecipant
+import popups.NumberFormatExceptionView
 import tornadofx.*
-import java.awt.Color
 
 class NewProjectView :View() {
 
