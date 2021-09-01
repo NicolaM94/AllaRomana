@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
 import javafx.scene.text.FontWeight
 import logic.Partecipant
+import logic.Project
 import tornadofx.*
 
 class PartecipantInitter :View() {
@@ -34,7 +35,8 @@ class PartecipantInitter :View() {
                 appController.listOfListeners.forEach {
                     appController.listOfPartecipant.add(Partecipant(it.value))
                 }
-                println(appController.listOfPartecipant)
+                appController.listOfProjects.add(Project(appController.projectname.value,appController.listOfPartecipant))
+                println(appController.listOfProjects)
                 replaceWith<MainView>()
             }
         }
