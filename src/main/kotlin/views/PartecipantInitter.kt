@@ -9,6 +9,7 @@ import tornadofx.*
 
 class PartecipantInitter :View() {
 
+    //
     val appController :AppController by inject()
 
     override val root = vbox {
