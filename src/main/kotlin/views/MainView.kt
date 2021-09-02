@@ -26,24 +26,26 @@ class MainView :View() {
                 fontWeight = FontWeight.EXTRA_BOLD
                 focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
-                setPrefSize(225.0,30.0)
+                setPrefSize(250.0,35.0)
             }
             action { replaceWith(NewProjectView::class) }
         }
         button ("Vedi i progetti") {
             style {
+                borderRadius += box(40.0.px,40.0.px)
                 fontWeight = FontWeight.EXTRA_BOLD
                 focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
-                setPrefSize(225.0,30.0)
+                setPrefSize(250.0,35.0)
             }
+            action { replaceWith<ProjectListView>() }
         }
         button ("Informazioni") {
             style {
                 fontWeight = FontWeight.EXTRA_BOLD
                 focusColor = Paint.valueOf("#ff6700")
                 baseColor = Color.web("#feb365")
-                setPrefSize(225.0,30.0)
+                setPrefSize(250.0,35.0)
             }
             action {
                 replaceWith<InfoView>()

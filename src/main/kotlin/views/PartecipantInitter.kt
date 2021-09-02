@@ -33,6 +33,7 @@ class PartecipantInitter :View() {
         }
         button ("Inserisci") {
             action {
+                appController.listOfPartecipant = mutableListOf<Partecipant>()
                 appController.listOfListeners.forEach {
                     appController.listOfPartecipant.add(Partecipant(it.value))
                 }
