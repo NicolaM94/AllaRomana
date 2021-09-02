@@ -20,4 +20,6 @@ class AppController :Controller() {
     /**Questo raccoglie i progetti correnti*/
     val listOfProjects : MutableList<Project> = mutableListOf()
 
+    var chosenProject = Project("null", listOf(Partecipant("null")))
+
 }

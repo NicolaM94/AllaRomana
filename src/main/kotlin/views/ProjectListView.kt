@@ -31,6 +31,11 @@ class ProjectListView :View() {
                 graphic = cache {
                     form {
                         fieldset {
+                            onDoubleClick {
+                                appController.chosenProject = it
+                                println(appController.chosenProject.projectName)
+                                replaceWith<ProjectView>()
+                            }
                             field ("Nome") {
                                 style {
                                     fontWeight = FontWeight.EXTRA_BOLD
