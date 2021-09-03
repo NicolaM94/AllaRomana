@@ -42,7 +42,7 @@ class ProjectListView :View() {
                                 }
                                 label(it.projectName)
                             }
-                            field { for (f in appController.listOfPartecipant){ label("${f.name}") }
+                            field { for (f in appController.listOfPartecipant){ label(f.name) }
                         }
                     }
                     }
