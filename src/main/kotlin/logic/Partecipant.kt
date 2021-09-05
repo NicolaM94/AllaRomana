@@ -27,5 +27,10 @@ class Partecipant (name:String) {
         return totalSpent - totalCost
     }
 
+    fun refreshCostsAndSpents() {
+        totalCost += costListener.value.toDouble()
+        totalSpent += spentListener.value.toDouble()
+    }
+
 
 }
