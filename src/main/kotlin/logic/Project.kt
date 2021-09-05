@@ -1,5 +1,7 @@
 package logic
 
+import javafx.beans.property.ObjectProperty
+import javafx.beans.property.SimpleStringProperty
 
 
 class Project (name : String, partecipants : List<Partecipant>) {
@@ -57,5 +59,7 @@ class Project (name : String, partecipants : List<Partecipant>) {
             }
         }
     }
+
+
 
 }

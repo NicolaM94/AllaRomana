@@ -15,7 +15,7 @@ class AppController :Controller() {
     var listOfPartecipant = mutableListOf<Partecipant>()
 
     /**Questo raccoglie i text values dei textfield creati dinamicamente in fase di docking della View */
-    val listOfListeners : MutableList<SimpleStringProperty> = mutableListOf()
+    var listOfListeners : MutableList<SimpleStringProperty> = mutableListOf()
 
     /**Questo raccoglie i progetti correnti*/
     val listOfProjects : MutableList<Project> = mutableListOf()

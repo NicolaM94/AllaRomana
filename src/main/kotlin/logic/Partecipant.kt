@@ -1,5 +1,7 @@
 package logic
 
+import javafx.beans.property.SimpleStringProperty
+
 /**
  * Classe Partecipant, crea un pratecipante per un progetto
  * @property name: nome del partecipante
@@ -13,6 +15,13 @@ class Partecipant (name:String) {
     val name :String = name
     var totalSpent :Double = 0.00
     var totalCost :Double = 0.00
+
+    /**
+     * Listener utilizzati nella clase AddTransactionView, tengono traccia delle aggiunte di spesa.
+     */
+    val costListener = SimpleStringProperty()
+    val spentListener = SimpleStringProperty()
+
 
     fun calculateDelta() :Double {
         return totalSpent - totalCost

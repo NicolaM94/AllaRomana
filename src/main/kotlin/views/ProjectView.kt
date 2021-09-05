@@ -48,7 +48,7 @@ class ProjectView :View() {
             }
             button ("Aggiungi movimento") {
                 style { setPrefSize(225.0,30.0) }
-                action {openInternalWindow<>()}
+                action {openInternalWindow<AddTransactionView>()}
 
             }
             button ("Distruggi progetto") {
