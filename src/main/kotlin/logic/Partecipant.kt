@@ -12,10 +12,10 @@ class Partecipant (name:String) {
 
     val name :String = name
     var totalSpent :Double = 0.00
-    val totalCost :Double = 0.00
+    var totalCost :Double = 0.00
 
     fun calculateDelta() :Double {
-        return totalCost - totalSpent
+        return totalSpent - totalCost
     }
 
 

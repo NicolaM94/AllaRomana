@@ -26,7 +26,36 @@ class Project (name : String, partecipants : List<Partecipant>) {
         return result
     }
 
+    fun calculator () {
+        val results :MutableList<String> = mutableListOf()
+        val creditors :MutableList<Partecipant> = mutableListOf()
+        val debitors :MutableList<Partecipant> = mutableListOf()
 
+        for (partecipant in projectPartecipants) {
+            if (partecipant.calculateDelta() > 0) {
+                creditors.add(partecipant)
+            } else if (partecipant.calculateDelta() < 0) {
+                debitors.add(partecipant)
+            }
+        }
 
+        for (creditor in creditors) {
+            for (debitor in debitors) {
+                if (creditor.calculateDelta() > debitor.calculateDelta()) {
+                    results.add("$debitor deve ridare ${debitor.calculateDelta()} a $creditor")
+                    debitors.remove(debitor)
+                }
+                else if (creditor.calculateDelta() == debitor.calculateDelta()) {
+                    results.add("$debitor deve ridare ${debitor.calculateDelta()} a $creditor")
+                    debitors.remove(debitor)
+                    creditors.remove(creditor)
+                }
+                else if (creditor.calculateDelta() < debitor.calculateDelta()) {
+                    results.add("$debitor deve ridare ${debitor.calculateDelta()} a $creditor")
+                    creditors.remove(creditor)
+                }
+            }
+        }
+    }
 
 }

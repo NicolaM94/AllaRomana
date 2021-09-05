@@ -5,12 +5,17 @@ import javafx.geometry.Pos
 import javafx.scene.Parent
 import javafx.scene.text.FontWeight
 import tornadofx.*
+import java.net.URI
 
 class ProjectView :View() {
 
     override val root = hbox {
 
         val appController = find<AppController> {  }
+
+        style {
+            backgroundImage += URI("logobg.png")
+        }
 
         form {
             fieldset (appController.chosenProject.projectName) {
@@ -41,8 +46,14 @@ class ProjectView :View() {
                 setSpacing(10.0)
                 setAlignment(Pos.TOP_RIGHT)
             }
-            button ("Aggiungi movimento") {style { setPrefSize(225.0,30.0) }}
-            button ("Distruggi progetto") {style { setPrefSize(225.0,30.0) }}
+            button ("Aggiungi movimento") {
+                style { setPrefSize(225.0,30.0) }
+                action {openInternalWindow<>()}
+
+            }
+            button ("Distruggi progetto") {
+                style { setPrefSize(225.0,30.0) }
+            }
             button ("Indietro") {
                 style { setPrefSize(225.0,30.0) }
                 action {replaceWith<ProjectListView>()}
